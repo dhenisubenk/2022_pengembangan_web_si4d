@@ -1,3 +1,9 @@
+<?php
+session_start();
+require_once 'config/koneksi.php';
+require_once 'config/session.php';
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,57 +21,16 @@
 </head>
 
 <body>
+    <?php require_once 'config/menu.php'; ?>
     <div class="container">
         <div class="row mt-3">
-            <div class="col-md-6 mx-auto">
+            <div class="col-md-12 mx-auto">
                 <div class="card">
-                    <div class="card-header">
-                        Form Nilai
-                    </div>
                     <div class="card-body">
-                        <form action="" method="POST">
-                            <div class="mb-2">
-                                <label for="" class="form-label">Nama</label>
-                                <input type="text" class="form-control" name="nama">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">UTS</label>
-                                <input type="text" class="form-control" name="uts">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">UAS</label>
-                                <input type="text" class="form-control" name="uas">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">TUGAS</label>
-                                <input type="text" class="form-control" name="tugas">
-                            </div>
-                            <div class="mb-2">
-                                <button type="submit" name="cetak" class="btn btn-primary">Cetak</button>
-                            </div>
-                        </form>
+
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Atque qui necessitatibus eligendi totam voluptas cum iure perferendis dolorum! Repellendus accusantium exercitationem neque, quia nulla nobis? Suscipit voluptatem unde repellendus quae!
                     </div>
                 </div>
-                <?php if (isset($_POST['cetak'])) {
-                    $nama = $_POST['nama'];
-                    $uts = $_POST['uts'];
-                    $uas = $_POST['uas'];
-                    $tugas = $_POST['tugas'];
-                    $nilai = (float)(0.3 * $uts) + (float)(0.3 * $uas) + (float)(0.4 * $tugas);
-                ?>
-                    <div class="card mt-2">
-                        <div class="card-body">
-                            <div class="mb-2">
-                                <label for="" class="form-label">Nama</label>
-                                <input type="text" value="<?= $nama ?>" class="form-control" name="nama">
-                            </div>
-                            <div class="mb-2">
-                                <label for="" class="form-label">Nilai</label>
-                                <input type="text" value="<?= $nilai ?>" class="form-control" name="nilai">
-                            </div>
-                        </div>
-                    </div>
-                <?php } ?>
 
             </div>
         </div>

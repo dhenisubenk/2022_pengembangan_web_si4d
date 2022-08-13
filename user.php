@@ -27,20 +27,18 @@ require_once 'config/session.php';
             <div class="col-md-12 mx-auto">
                 <div class="card">
                     <div class="card-header">
-                        Form Nilai
+                        Data User
                     </div>
                     <div class="card-body">
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formMhs">
-                            Tambah Mahasiswa
+                            Tambah User
                         </button>
                         <table class="table table-bordered mt-3">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>NIM</th>
-                                    <th>NAMA</th>
-                                    <th>JURUSAN</th>
-                                    <th>ALAMAT</th>
+                                    <th>No</th>
+                                    <th>Usernmae</th>
+                                    <th>Role</th>
                                     <th>AKSI</th>
                                 </tr>
                             </thead>
@@ -49,19 +47,19 @@ require_once 'config/session.php';
                                 //SELECT * FROM namtabel
                                 // DELETE -> GET NIM -> QUERY DELETE
                                 // EDIT -> GET NIM -> CARI DI DB -> FORM -> UPDATE
-                                $sql = mysqli_query($con, "SELECT * FROM mahasiswa");
+                                $sql = mysqli_query($con, "SELECT * FROM user");
+                                $no = 1;
                                 while ($row = mysqli_fetch_array($sql)) {
                                     echo "<tr>
-                                            <td><img src='img/$row[foto]' width='50'></td>
-                                            <td>$row[nim]</td>
-                                            <td>$row[nama]</td>
-                                            <td>$row[jurusan]</td>
-                                            <td>$row[alamat]</td>
+                                            <td>$no</td>
+                                            <td>$row[username]</td>
+                                            <td>$row[level]</td>
                                             <td>
-                                                <a href='mahasiswa_edit.php?nim=$row[nim]' class='btn btn-warning btn-sm'>Edit</a>
-                                                <a href='mahasiswa_delete.php?nim=$row[nim]' onclick=\"return confirm('Hapus Data?')\" class='btn btn-danger btn-sm'>Delete</a>
+                                                <a href='' class='btn btn-warning btn-sm'>Edit</a>
+                                                <a href='' onclick=\"return confirm('Hapus Data?')\" class='btn btn-danger btn-sm'>Delete</a>
                                             </td>
                                     </tr>";
+                                    $no++;
                                 }
 
                                 ?>
@@ -79,35 +77,25 @@ require_once 'config/session.php';
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Form Mahasiswa</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Form User</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="mahasiswa_save.php" method="POST" enctype="multipart/form-data">
+                    <form action="user_save.php" method="POST" enctype="multipart/form-data">
                         <div class="mb-2">
-                            <label for="" class="form-label">NIM</label>
-                            <input type="text" class="form-control" name="nim">
+                            <label for="" class="form-label">Username</label>
+                            <input type="text" class="form-control" name="username">
                         </div>
                         <div class="mb-2">
-                            <label for="" class="form-label">Nama</label>
-                            <input type="text" class="form-control" name="nama">
+                            <label for="" class="form-label">Password</label>
+                            <input type="text" class="form-control" name="password">
                         </div>
                         <div class="mb-2">
-                            <label for="" class="form-label">Jurusan</label>
-                            <select name="jurusan" class="form-select" id="">
-                                <option>Sistem Informasi</option>
-                                <option>Teknik Informatika</option>
-                                <option>Manajemen Informatika</option>
-                                <option>Komputerisasi Akuntansi</option>
+                            <label for="" class="form-label">Level</label>
+                            <select name="level" class="form-select" id="">
+                                <option>Admin</option>
+                                <option>User</option>
                             </select>
-                        </div>
-                        <div class="mb-2">
-                            <label for="" class="form-label">Alamat</label>
-                            <input type="text" class="form-control" name="alamat">
-                        </div>
-                        <div class="mb-2">
-                            <label for="" class="form-label">Foto</label>
-                            <input type="file" class="form-control" name="foto">
                         </div>
                         <div class="mb-2">
                             <button type="submit" name="cetak" class="btn btn-primary">Simpan</button>

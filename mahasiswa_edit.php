@@ -25,6 +25,7 @@ if (isset($_GET['nim'])) {
     </head>
 
     <body>
+        <?php require_once 'config/menu.php'; ?>
         <div class="container">
             <div class="row mt-3">
                 <div class="col-md-6 mx-auto">
